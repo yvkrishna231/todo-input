@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Demo from './lifeCycleMethod/Demo';
+import App from './Refs/4thTypeRefMethod/App';
 
-ReactDOM.render(<Demo />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
