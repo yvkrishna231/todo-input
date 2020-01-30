@@ -20,7 +20,7 @@ class PasswordShowHide extends Component {
                 <input
                     type={this.state.hidden ? "password" : "text"}
                 />
-                <button onClick={this.toggleShow}>Show / Hide</button>
+                <button onClick={this.toggleShow}>{this.state.hidden && this.state.hidden ? 'show' : 'hide'}</button>
             </div>
         );
     }

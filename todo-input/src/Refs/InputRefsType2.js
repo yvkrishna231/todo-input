@@ -16,9 +16,10 @@ class InputRefsType2 extends React.Component {
         }
     }
     handleOnClick = () => {
-      alert(this.cbRefs.value)
+        alert(this.cbRefs.value)
     }
     render() {
+        console.log(this.props);
         return (
             <div className='text-center mt-5'>
                 <form>

@@ -10,10 +10,12 @@ class ErrorBoundary extends Component {
         }
     }
     render() {
+        console.log(this.props);
         if (this.state.hasError) {
             return <h1 className='text-danger'>Something went wrong</h1>
         }
         return this.props.children
+
     }
 }
 

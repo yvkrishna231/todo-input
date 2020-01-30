@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DataContext = React.createContext('venkatakrishna');
+const DataContext = React.createContext();
 
 const DataProvider = DataContext.Provider;
 

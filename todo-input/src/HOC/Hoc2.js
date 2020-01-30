@@ -14,4 +14,4 @@ class Hoc2 extends React.Component {
         )
     }
 }
-export default HocMain(Hoc2, 1.3);
+export default HocMain(Hoc2, 1);

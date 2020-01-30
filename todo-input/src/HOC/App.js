@@ -6,8 +6,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Hoc1 text='krishna yendluri'/>
-                <Hoc2 />    
+                <Hoc1 text='krishna yendluri' />
+                <Hoc2 />
             </div>
         )
     }

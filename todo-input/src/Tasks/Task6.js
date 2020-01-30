@@ -22,7 +22,13 @@ class Task6 extends Component {
         return (
             <div className='container mt-5'>
                 <div className='row'>
-                    <div className='col-lg-6 text-center m-auto border' style={{ borderRadius: '20px' }}>
+                    <div className='col-lg-6 col-sm-10 col-11 text-center m-auto border'
+                        style={{
+                            borderTopRightRadius: '142px',
+                            borderBottomLeftRadius: '153px',
+                            outline: 'none',
+                            backgroundColor: 'whitesmoke'
+                        }}>
                         <div className='col-lg-10 col-md-8 col-sm-12 col-12 text-center m-auto'>
                             <h1 className='text-primary m-0'>Sign In</h1>
                             <form onSubmit={this.handleOnSubmit} className='p-4'>

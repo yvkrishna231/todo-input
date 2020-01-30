@@ -5,7 +5,7 @@ const HocMain = (OldComponent, IncrementNumber) => {
         state = {
             count: 0
         }
-        handleOnClick = () => { 
+        handleOnClick = () => {
             this.setState(prevState => {
                 return {
                     count: prevState.count + IncrementNumber

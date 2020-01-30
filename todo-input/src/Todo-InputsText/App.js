@@ -5,15 +5,30 @@ class App extends Component {
         input: '',
         todoInput: [],
         error: false,
-        visible: false
+        visible: false,
+        editable: false,
+        todoInputEdit: null
     }
     handleOnSubmit = (e) => {
         e.preventDefault();
-        if (this.state.input === '') {
+        if (this.state.editable && this.state.input) {
+            this.setState(prevState => {
+                prevState.todoInput[prevState.todoInputEdit] = prevState.input;
+                return {
+                    ...prevState,
+                    visible: false,
+                    editable: false,
+                    todoInputEdit: null,
+                    input: '',
+                    error: true
+
+                }
+            })
+        } else if (this.state.input === '') {
             this.setState({ error: true })
         } else if (this.state.todoInput.indexOf(this.state.input) > -1) {
-            this.setState({ visible: true })
-        } else {
+            this.setState({ visible: true, input: '' })
+        } else if (this.state.input) {
             this.setState({
                 todoInput: this.state.todoInput.concat(this.state.input),
                 error: false,
@@ -23,10 +38,10 @@ class App extends Component {
         }
     }
     handleOnChange = (e) => {
-        this.setState({ input: e.target.value })
+        this.setState({ [e.target.name]: e.target.value })
     }
     handleOnClickRemoveAll = () => {
-        this.setState({ todoInput: [] })
+        this.setState({ todoInput: [], input: '' })
     }
     handleRemoveTodoText = (ind) => {
         this.setState((prevState) => {
@@ -36,6 +51,9 @@ class App extends Component {
                 ...prevState
             }
         })
+    }
+    handleOnClickEdit = (v, i) => {
+        this.setState({ input: v, todoInputEdit: i, editable: true });
     }
     render() {
         return (
@@ -54,19 +72,26 @@ class App extends Component {
                             <form onSubmit={this.handleOnSubmit}>
                                 <input
                                     type='text'
+                                    name='input'
                                     value={this.state.input}
                                     className='form-control text-primary'
                                     onChange={this.handleOnChange}
                                 />
-                                <button className='btn btn-sm btn-success mt-3 float-right'>Add</button>
+                                {this.state.editable && this.state.editable ? <button
+                                    className='btn btn-sm btn-info mt-3 float-right'>
+                                    update
+                                    </button> : <button
+                                        className='btn btn-sm btn-success mt-3 float-right'>
+                                        Add
+                                    </button>}
                             </form>
                             <button
                                 onClick={this.handleOnClickRemoveAll}
                                 className='btn btn-sm btn-danger mt-3 float-left'>RemoveAll</button>
                             <div className='mt-3'>
                                 {this.state.todoInput.length === 0 && <p className='text-danger'>No Todos Found</p>}
-                                {this.state.error && <p className='text-danger'>Enter some todo text</p>}
-                                {this.state.visible && <p className='text-danger'>Todo Input Already Exists</p>}
+                                {this.state.error && <p className='text-danger text-center'>Enter some todo text</p>}
+                                {this.state.visible && <p className='text-danger text-center'>Todo Input Already Exists</p>}
                             </div>
                         </div>
                     </div>
@@ -85,6 +110,11 @@ class App extends Component {
                                             >
                                                 Remove
                                             </botton>
+                                            <button
+                                                onClick={() => this.handleOnClickEdit(val, ind)}
+                                                className='btn btn-sm btn-info float-right mr-1'>
+                                                edit
+                                                </button>
                                         </li>
                                     )
                                 })}

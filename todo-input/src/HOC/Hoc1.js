@@ -6,17 +6,17 @@ class Hoc1 extends Component {
         name: 'venkata krishna'
     }
     render() {
-        const { count, handleOnClick } = this.props
+        const { count, text, handleOnClick } = this.props
         return (
             <div className='text-center mt-5'>
                 <h1
                     onMouseOver={handleOnClick}>
                     Hello
-                {this.state.name}
+               &nbsp;<mark>{text}</mark>&nbsp;
                     Your Count Is {count}</h1>
             </div>
         )
     }
 }
 
-export default HocMain(Hoc1, 1.6);
+export default HocMain(Hoc1, 1);

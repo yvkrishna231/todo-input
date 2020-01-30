@@ -8,7 +8,7 @@ const App = () => {
     const data = [{ name: 'krishna', age: 24, village: 'vrkota', }, { name: 'venkat', age: 23, village: 'veera raghavuni kota' }]
     return (
         <div className='text-center mt-5'>
-            {data.map((val,ind) => <List1 val={val} ind={ind} />)}
+            {data.map((val, ind) => <List1 val={val} ind={ind} />)}
         </div>
     )
 }

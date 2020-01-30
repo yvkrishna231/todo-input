@@ -4,21 +4,25 @@ export class Task1 extends Component {
     state = {
         text: '',
         text1: '',
-        visible: false
+        visible: false,
+        error: false
     }
     handleOnSubmit = (e) => {
         e.preventDefault();
-        if (this.state.text && this.state.text1) {
-            this.setState({ visible: !this.state.visible })
+        if (this.state.text && this.state.text1 === this.state.text) {
+            this.setState({ visible: !this.state.visible, error: false })
+        } else {
+            this.setState({ error: true, visible: true })
         }
+
 
     }
     handleOnChange = (e) => {
-        this.setState({ text: e.target.value })
+        this.setState({ [e.target.name]: e.target.value })
 
     }
     handleOnChange1 = (e) => {
-        this.setState({ text1: e.target.value })
+        this.setState({ [e.target.name]: e.target.value })
 
     }
     render() {
@@ -42,6 +46,7 @@ export class Task1 extends Component {
                                 <i className={`fa ${this.state.visible ? "fa-eye" : "fa-eye-slash"}`}></i>
                             </button>
                         </form>
+                        {this.state.error && <p className='text-danger'>Your password is no same</p>}
                     </div>
                 </div>
             </div>
