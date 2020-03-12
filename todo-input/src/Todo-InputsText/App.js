@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './Todo.css';
 
 class App extends Component {
     state = {
@@ -7,7 +8,7 @@ class App extends Component {
         error: false,
         visible: false,
         editable: false,
-        todoInputEdit: null
+        todoInputEdit: null,
     }
     handleOnSubmit = (e) => {
         e.preventDefault();
@@ -53,7 +54,7 @@ class App extends Component {
         })
     }
     handleOnClickEdit = (v, i) => {
-        this.setState({ input: v, todoInputEdit: i, editable: true });
+        this.setState({ todoInputEdit: i, input: v, editable: true });
     }
     render() {
         return (
@@ -77,17 +78,13 @@ class App extends Component {
                                     className='form-control text-primary'
                                     onChange={this.handleOnChange}
                                 />
-                                {this.state.editable && this.state.editable ? <button
-                                    className='btn btn-sm btn-info mt-3 float-right'>
+                                {this.state.editable ? <button
+                                    className='float-right btn btn-sm btn-info mt-2'>
                                     update
                                     </button> : <button
-                                        className='btn btn-sm btn-success mt-3 float-right'>
-                                        Add
-                                    </button>}
+                                        className='float-right btn btn-sm btn-success mt-2'>submit</button>}
                             </form>
-                            <button
-                                onClick={this.handleOnClickRemoveAll}
-                                className='btn btn-sm btn-danger mt-3 float-left'>RemoveAll</button>
+                            <button onClick={this.handleOnClickRemoveAll} className='btn btn-sm btn-danger float-left mt-2'>remove all</button>
                             <div className='mt-3'>
                                 {this.state.todoInput.length === 0 && <p className='text-danger'>No Todos Found</p>}
                                 {this.state.error && <p className='text-danger text-center'>Enter some todo text</p>}
@@ -104,17 +101,19 @@ class App extends Component {
                                             key={ind}
                                         >
                                             {val}
-                                            <botton
+                                            <button
                                                 className='btn btn-sm btn-danger float-right'
                                                 onClick={() => this.handleRemoveTodoText(ind)}
                                             >
                                                 Remove
-                                            </botton>
+                                            </button>
                                             <button
+                                                className='btn btn-sm btn-info float-right mr-2'
                                                 onClick={() => this.handleOnClickEdit(val, ind)}
-                                                className='btn btn-sm btn-info float-right mr-1'>
+                                            >
                                                 edit
-                                                </button>
+                                            </button>
+
                                         </li>
                                     )
                                 })}

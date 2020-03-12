@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { DataConsumer } from '../DataContext'
+import DataContext from '../DataContext'
 
 class Child3 extends Component {
     render() {
         return (
             <div>
-                <DataConsumer>
+                {/* <DataConsumer>
                     {
                         data => (
                             <div>
@@ -17,10 +17,13 @@ class Child3 extends Component {
                             </div>
                         )
                     }
-                </DataConsumer>
+                </DataConsumer> */}
+                <h1>{this.context.text}</h1>
             </div>
         )
     }
 }
+
+Child3.contextType = DataContext
 
 export default Child3

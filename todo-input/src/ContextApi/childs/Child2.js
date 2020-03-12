@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import DataContext from '../DataContext'
+import React, { Component } from 'react';
+import DataContext from '../DataContext';
 
 class Child2 extends Component {
     static contextType = DataContext

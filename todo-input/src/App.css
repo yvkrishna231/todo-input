@@ -43,3 +43,13 @@ width
   color: lightslategray;
 }
 
+.todo_app .completed {
+  text-decoration: line-through;
+  color: lightslategray;
+}
+#mapremoveclass{
+  display: none;
+}
+.todo_app ul li:hover #mapremoveclass{
+  display: inline;
+}
